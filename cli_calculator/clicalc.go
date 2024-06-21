@@ -8,7 +8,7 @@ import (
 )
 
 func scanNumber() float64 {
-	fmt.Print("choose number: ")
+	fmt.Print("\nchoose number: ")
 	var num float64
 	_, err := fmt.Scanf("%f", &num)
 	if err != nil {
@@ -22,12 +22,8 @@ func main() {
 	scanner := bufio.NewScanner(os.Stdin)
 
 	fmt.Println("Simple CLI GoLang calculator")
-	fmt.Print("\nchoose starting number number: ")
-	var f float64
-	_, err := fmt.Scan(&f)
-	if err != nil {
-		log.Fatal(err)
-	}
+	fmt.Print("\nstarting number")
+	f := scanNumber()
 
 	for {
 		fmt.Print("\nprompt: ")
