@@ -92,59 +92,60 @@ func main() {
 	fmt.Println("2  ","_","_", "|","_","_", "|", "_","_")
 	fmt.Println("3  "," "," ", "|"," "," ", "|", " "," ")
 
+	var moves int
 	for{
         prompt := prompt()
         switch prompt {
-        case "A1", "a1":
+        case "A1", "a1", "1a", "1A":
             value, changed := change(who, row1[1])
 			if changed {
 				row1[1] = value
 				who = changeturn(who)
 			}
 			
-		case "B1", "b1":
+		case "B1", "b1", "1b", "1B":
 			value, changed := change(who, row1[4])
 			if changed {
 				row1[4] = value
 				who = changeturn(who)
 			}
-		case "C1", "c1":
+		case "C1", "c1", "1c", "1C":
 			value, changed := change(who, row1[7])
 			if changed {
 				row1[7] = value
 				who = changeturn(who)
 			}
-		case "A2", "a2":
+		case "A2", "a2", "2a", "2A":
 			value, changed := change(who, row2[1])
 			if changed {
 				row2[1] = value
 				who = changeturn(who)
 			}
-		case "B2", "b2":
+		case "B2", "b2", "2b", "2B":
 			value, changed := change(who, row2[4])
 			if changed {
 				row2[4] = value
 				who = changeturn(who)
 			}
-		case "C2", "c2":
+		case "C2", "c2", "2c", "2C":
 			value, changed := change(who, row2[7])
 			if changed {
 				row2[7] = value
 				who = changeturn(who)
 			}
-		case "A3", "a3":
+		case "A3", "a3", "3a", "3A":
 			value, changed := change(who, row3[1])
 			if changed {
 				row3[1] = value
 				who = changeturn(who)
 			}
-		case "B3", "b3":
+		case "B3", "b3", "3b", "3B":
 			value, changed := change(who, row3[4])
 			if changed {
 				row3[4] = value
 				who = changeturn(who)
 			}
-		case "C3", "c3":
+		case "C3", "c3", "3c", "3C":
 			value, changed := change(who, row3[7])
 			if changed {
 				row3[7] = value
@@ -161,12 +162,16 @@ func main() {
 		srow1 := ArrtoStrr(row1)
 		srow2 := ArrtoStrr(row2)
 		srow3 := ArrtoStrr(row3)
-		fmt.Println("1", srow1)
-		fmt.Println("2", srow2)
-		fmt.Println("3", srow3)
+		fmt.Println("1  ", srow1)
+		fmt.Println("2  ", srow2)
+		fmt.Println("3  ", srow3)
+		moves++
 		won, whowon := winning(row1, row2, row3)
 		if(won == true){
 			fmt.Println("\n\n", whowon, " won congratulations!!")
+			os.Exit(0)
+		} else if(moves == 9){
+			fmt.Println("\n\nits a tie")
 			os.Exit(0)
 		} else{
 			continue
