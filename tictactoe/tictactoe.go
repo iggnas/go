@@ -8,7 +8,6 @@ import (
 	"strings"
 )
 
-
 func prompt() string {
 	reader := bufio.NewReader(os.Stdin)
 	for {
@@ -26,10 +25,9 @@ func prompt() string {
 	}
 }
 
-func printArr(strarr []string) string {
+func ArrtoStrr(strarr []string) string {
     strc := strings.Join(strarr, " ")
     strc = strings.Trim(strc, "[]")
-    fmt.Print("\n" + strc)
     return strc
 }
 
@@ -89,9 +87,10 @@ func main() {
 	row2 := []string{"_","_", "|","_","_", "|", "_","_"}
 	row3 := []string{" "," ", "|"," "," ", "|", " "," "}
 	fmt.Println("Tic tac toe game")
-	printArr(row1)
-	printArr(row2)
-	printArr(row3)
+	fmt.Println("     A     B     C")
+	fmt.Println("1  ","_","_", "|","_","_", "|", "_","_")
+	fmt.Println("2  ","_","_", "|","_","_", "|", "_","_")
+	fmt.Println("3  "," "," ", "|"," "," ", "|", " "," ")
 
 	for{
         prompt := prompt()
@@ -153,20 +152,18 @@ func main() {
 			}
 		case "q", "Q":
 			os.Exit(0)
-		case "h", "H":
-			fmt.Println("     A     B     C")
-			fmt.Println("1  ","_","_", "|","_","_", "|", "_","_")
-			fmt.Println("2  ","_","_", "|","_","_", "|", "_","_")
-			fmt.Println("3  "," "," ", "|"," "," ", "|", " "," ")
-			fmt.Print("Q to quit.")
+		case "h", "H", "help":
+			fmt.Print("\nQ to quit.")
 		default:
 			fmt.Print("Type h for help.")
 		}
-
-		printArr(row1)
-		printArr(row2)
-		printArr(row3)
-
+		fmt.Println("     A     B     C")
+		srow1 := ArrtoStrr(row1)
+		srow2 := ArrtoStrr(row2)
+		srow3 := ArrtoStrr(row3)
+		fmt.Println("1", srow1)
+		fmt.Println("2", srow2)
+		fmt.Println("3", srow3)
 		won, whowon := winning(row1, row2, row3)
 		if(won == true){
 			fmt.Println("\n\n", whowon, " won congratulations!!")
